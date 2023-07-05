@@ -1,0 +1,46 @@
+{
+    "name": "baserproject/basercms",
+    "description": "Content management system based on CakePHP",
+    "type": "application",
+    "keywords": [
+        "CMS",
+        "CakePHP"
+    ],
+    "homepage": "http://basercms.net/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "baserCMS Community",
+            "homepage": "http://basercms.net/thanks/index.html"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/baserproject/basercms/issues",
+        "forum": "http://forum.basercms.net/",
+        "source": "https://github.com/baserproject/basercms"
+    },
+    "require": {
+        "php": ">=5.6",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.6 || ^5.0",
+        "cakephp/debug_kit": "2.2.*"
+    },
+    "bin": [
+        "lib/Cake/Console/cake"
+    ],
+    "config": {
+        "vendor-dir": "vendors/",
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "scripts": {
+        "check": [
+            "@test"
+        ],
+        "install": "php ./app/Console/cake.php bc_manager install \"https://localhost\" \"mysql\" \"admin\" \"basercms\" \"webmaster@example.org\" --host \"bc-db\" --database \"basercms\" --login \"root\" --password \"root\" --prefix \"mysite_\" --data \"bc_sample.default\"",
+        "test": "php ./app/Console/cake.php baser_test baser BcAll"
+    }
+}
