@@ -1774,24 +1774,7 @@ EOD;
 	{
 		if (!$id) {
 			$Content = ClassRegistry::init('Content');
-			if (isset($this->request->params['Content']['site_id'])) {
-				$siteRoot = $Content->getSiteRoot($this->request->params['Content']['site_id']);
-			} else {
-				$siteRoots = $Content->find('all', [
-					'conditions' => [
-						'Content.site_root' => true
-					], 'recursive' => -1]);
-				foreach ($siteRoots as $key => $siteRoot) {
-					if ($key === 0){
-						$siteRootSub = $siteRoot;
-						continue;
-					}
-					if (strpos($this->request->here, $siteRoot["Content"]["url"]) !== false) {
-						break;
-					}
-					$siteRoot = $siteRootSub;
-				}
-			}
+			$siteRoot = $Content->getSiteRoot($this->request->params['Content']['site_id']);
 			$id = $siteRoot['Content']['id'];
 		}
 		$options = array_merge([
